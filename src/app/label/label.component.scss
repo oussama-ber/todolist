@@ -1,0 +1,32 @@
+.label-wrapper{
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 8px;
+    font-weight: 500;
+}
+
+.error{
+    color: red;
+    border: 1px solid rgb(248, 149, 149);
+    background-color: rgb(249, 198, 198);
+}
+
+.warnning{
+    color: rgb(255, 157, 0);
+    border: 1px solid rgb(245, 207, 137);
+    background-color: rgb(255, 228, 177);
+}
+
+.info{
+    color: rgb(0, 163, 218);
+    border: 1px solid lightblue;
+    background-color: lightblue;
+}
+
+.success{
+    color: green;
+    border: 1px solid rgb(172, 255, 172);
+    background-color: rgb(186, 247, 186);
+}

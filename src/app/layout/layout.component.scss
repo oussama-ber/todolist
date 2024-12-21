@@ -1,0 +1,26 @@
+.layout-wrapper {
+  background-color: var(--survace-ground);
+  .flex-styles{
+    .layout-main-container{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      min-height: 100vh;
+      justify-content: space-between;
+      padding: 7rem 2rem 2rem 2rem;
+      transition: margin-left .2s;
+    }
+    .layout-main{
+      width: 85%;
+      flex: 1 1 auto;
+    }
+    .cards-wrapper{
+      display: flex;
+      flex-direction: column;
+      width: 15%;
+    }
+  }
+}
+.ml{
+  margin-left: 20rem;
+}
