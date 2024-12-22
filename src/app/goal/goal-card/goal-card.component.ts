@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {DatePipe} from '@angular/common';
-import {LabelComponent} from '../../label/label.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {Goal} from '../models/goal';
 import {RouterLink} from '@angular/router';
@@ -20,15 +19,9 @@ import {ConfirmationDialogComponent} from '../../shared/components/confirmation-
     <div class="card-wrapper flex flex-col gap-1r">
       <div class="card-header">
         <span>{{ goal().title }} (5)</span>
-
-<!--        <app-label label="error" varriant="error" />-->
-<!--        <app-label label="warnning" varriant="warnning" />-->
-<!--        <app-label label="info" varriant="info" />-->
-<!--        <app-label label="success" varriant="success" />-->
-
         <div class="icons">
-          <i class="pi pi-pencil" [routerLink]="['card',goal().id]"></i>
-          <i class="pi pi-trash cursor-pointer" (click)="onOpenDeleteConfirmation(goal().id)"></i>
+          <i class="pi pi-pencil cursor-pointer" [routerLink]="['card',goal().id]"></i>
+          <i class="pi pi-trash cursor-pointer" style="color: red" (click)="onOpenDeleteConfirmation(goal().id)"></i>
         </div>
       </div>
       <div class="card-content">
@@ -43,25 +36,12 @@ import {ConfirmationDialogComponent} from '../../shared/components/confirmation-
         <p-progressBar [value]="goal().progress" class="progressbar"/>
       </div>
     </div>
-<!--    @if (confirmationIsVisible()){-->
-<!--      <app-confirmation-dialog (onConfirm)="onDeleteConfirmation($event)" (onCancel)="onCancel()" />-->
-<!--    }-->
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalCardComponent {
   private readonly confirmationService = inject(ConfirmationService);
   goal = input.required<Goal>();
-
-  readonly confirmationIsVisible = this.confirmationService.confirmationModelIsOpened;
-
-  onDeleteConfirmation(goalId: number) {
-    this.confirmationService.confirmationModelOff();
-    // this.goals = this.goals.filter(goal => goal.id !== goalId);
-  }
-  onCancel() {
-    this.confirmationService.confirmationModelOff();
-  }
 
   onOpenDeleteConfirmation(goalId: number) {
     this.confirmationService.confirmationModelOn(goalId);

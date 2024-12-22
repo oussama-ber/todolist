@@ -6,6 +6,7 @@ import {Injectable, signal} from '@angular/core';
 export class ConfirmationService {
   #openConfirmationSignal = signal(false);
   confirmationModelIsOpened = this.#openConfirmationSignal.asReadonly();
+  confirmationModelIsOpenedWritable = this.#openConfirmationSignal;
 
   #itemIdSignal = signal<number>(0);
   itemIdToDelete = this.#itemIdSignal.asReadonly();

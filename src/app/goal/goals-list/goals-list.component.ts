@@ -11,13 +11,13 @@ import {ConfirmationService} from '../../shared/services/confirmation.service';
   standalone: true,
   imports: [ProgressBarModule, GoalCardComponent, ConfirmationDialogComponent],
   template: `
+    <div class="text-xl">Goals</div>
     @for (goal of goals; track goal.id) {
       <app-goal-card [goal]="goal" />
     }
     @if (confirmationIsVisible()){
       <app-confirmation-dialog (onConfirm)="onDeleteConfirmation($event)" (onCancel)="onCancel()" />
     }
-
   `,
   styleUrl: './goals-list.component.scss'
 })
@@ -25,7 +25,6 @@ export class GoalsListComponent {
   private readonly confirmationService = inject(ConfirmationService);
   readonly confirmationIsVisible = this.confirmationService.confirmationModelIsOpened;
 
-  currentDate: Date = new Date();
 
   goals: Goal[] = [
     {
@@ -48,7 +47,7 @@ export class GoalsListComponent {
       ]
     },
     {
-      id: 1,
+      id: 2,
       title: 'goal 1',
       description: '',
       createdDate: new Date(),
